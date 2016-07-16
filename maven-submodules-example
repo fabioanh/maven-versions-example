@@ -1,0 +1,48 @@
+# Maven steps to generate a project to demo the maven versions plugin
+
+mvn archetype:generate -DarchetypeGroupId=org.codehaus.mojo.archetypes -DarchetypeArtifactId=pom-root -DarchetypeVersion=RELEASE -DgroupId=example.post.my -DartifactId=mail-services -DinteractiveMode=false
+
+cd mail-services
+
+### Create woodpecker project
+
+mvn archetype:generate -DarchetypeGroupId=org.codehaus.mojo.archetypes -DarchetypeArtifactId=pom-root -DgroupId=example.post.my -DarchetypeVersion=RELEASE -DgroupId=example.post.my -DartifactId=woodpecker -DinteractiveMode=false
+
+cd woodpecker
+
+### go inside pom and remove version and group id which will be inherited from parent
+
+mvn archetype:generate -DarchetypeGroupId=org.apache.maven.archetypes -DarchetypeArtifactId=maven-archetype-quickstart -DgroupId=example.post.my -DarchetypeVersion=RELEASE -DgroupId=example.post.my -DartifactId=birdseed -DinteractiveMode=false
+
+cd birdseed
+
+### go inside pom and remove version and group id which will be inherited from parent
+
+cd ..
+
+mvn archetype:generate -DarchetypeGroupId=org.apache.maven.archetypes -DarchetypeArtifactId=maven-archetype-quickstart -DgroupId=example.post.my -DarchetypeVersion=RELEASE -DgroupId=example.post.my -DartifactId=zoo-route -DinteractiveMode=false
+
+cd zoo-route
+
+### go inside pom and remove version and group id which will be inherited from parent
+
+cd ..
+
+### GENERATE EAR PROJECT
+
+mvn archetype:generate -DarchetypeGroupId=org.apache.maven.archetypes -DarchetypeArtifactId=maven-archetype-j2ee-simple -DarchetypeVersion=RELEASE -DartifactId=tmp-project -DgroupId=example.post.my -DinteractiveMode=false
+
+### copy and modify the ear project to put birdseed and zoo-route in the pom
+
+mv tmp-project/ear ./
+
+### add ear module to woodpecker project
+
+cd ear
+
+### Modify pom to put birdseed and zoo-route as dependencies and change parent pom to set same as in birdseed and zoo-route
+
+
+### in the mail-services directory: Update new version
+
+mvn versions:set -DnewVersion=1.0.1-SNAPSHOT
