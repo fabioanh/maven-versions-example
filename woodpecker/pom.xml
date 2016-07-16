@@ -4,11 +4,9 @@
   <parent>
     <artifactId>mail-services</artifactId>
     <groupId>example.post.my</groupId>
-    <version>1.0.1-SNAPSHOT</version>
+    <version>1.0-SNAPSHOT</version>
   </parent>
-  <groupId>example.post.my</groupId>
   <artifactId>woodpecker</artifactId>
-  <version>1.0-SNAPSHOT</version>
   <packaging>pom</packaging>
   <name>woodpecker</name>
   <modules>
