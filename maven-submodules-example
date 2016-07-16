@@ -35,6 +35,7 @@ mvn archetype:generate -DarchetypeGroupId=org.apache.maven.archetypes -Darchetyp
 ### copy and modify the ear project to put birdseed and zoo-route in the pom
 
 mv tmp-project/ear ./
+rm -r tmp-project/
 
 ### add ear module to woodpecker project
 
@@ -46,3 +47,6 @@ cd ear
 ### in the mail-services directory: Update new version
 
 mvn versions:set -DnewVersion=1.0.1-SNAPSHOT
+
+-- mvn versions:revert
+mvn versions:commit
